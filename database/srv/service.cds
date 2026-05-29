@@ -7,4 +7,17 @@ service KalenderService
   entity Fraværssøknad as projection on db.Fraværssøknad;
   entity Fridager     as projection on db.Fridager;
   entity LoginInfo    as projection on db.LoginInfo;
+
+  @requires: 'any'
+  action validateLogin(username: String, password: String) returns 
+  {
+    accessToken: String;
+    refreshToken: String;
+  };
+
+  @requires: 'any'
+  action refreshToken(refreshToken: String) returns 
+  {
+    accessToken: String;
+  };
 }
