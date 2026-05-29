@@ -1,0 +1,3 @@
+ID,ansatt_ID,username,password_hash,created_at,updated_at
+1,2,nora.kristiansen,$2b$10$swhhJbUO3a0jwLlBNZK9f.eKLD2t8B6UCGAIvGrHaTB3ig5GMCXZK,2025-09-01T12:00:00Z,2025-09-01T12:00:00Z
+2,4,silje.andersen,$2b$10$ZhE.lqHQBvtCq5fvdeJLWu.B.ga23kDw8YQordyb4yV3YCRFx4HYK,2025-09-01T12:00:00Z,2025-09-01T12:00:00Z
