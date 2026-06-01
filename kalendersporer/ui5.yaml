@@ -1,25 +1,41 @@
-specVersion: "4.0"
+specVersion: "3.1"
 metadata:
   name: kalendersporer
 type: application
+resources:
+  configuration:
+    paths:
+      webapp: /webapp
+server:
+  customMiddleware:
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      mountPath: /odata/v4/kalender
+      configuration:
+        baseUri: http://localhost:4004/odata/v4/kalender
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: preview-middleware
+      afterMiddleware: compression
+      configuration:
+        flp:
+          path: /test/flpSandbox.html
+builder:
+  customTasks:
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+      configuration:
+        onlyZip: true
+        relativePaths: true
+        archiveName: kalendersporer-content
 framework:
-  name: OpenUI5
-  version: "1.148.0"
+  name: SAPUI5
+  version: 1.136.2
   libraries:
     - name: sap.m
     - name: sap.ui.core
     - name: themelib_sap_horizon
-builder:
-  resources:
-    excludes:
-      - "test/e2e/**"
-server:
-  customMiddleware:
-    - name: "@ui5/middleware-code-coverage"
-      afterMiddleware: compression
-      configuration:
-        excludePatterns:
-          - "resources/"
-          - "test/"
-    - name: ui5-middleware-livereload
-      afterMiddleware: compression

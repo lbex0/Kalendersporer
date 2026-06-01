@@ -35,7 +35,7 @@
             <Button icon="sap-icon://palette" tooltip="Toggle Theme" press="onToggleTheme" />
         </Toolbar>
         
-<HBox>
+        <HBox>
         <VBox class="sapUiSmallMarginEnd">
             <Label text="Appointment Size:" />
             <Select change="handleAppointmentHeightChange" width="230px">
@@ -110,7 +110,6 @@
                         description="{description}"
                         type="{type}" />
                 </intervalHeaders>
-
             </PlanningCalendarRow>
         </rows>
     </PlanningCalendar>
