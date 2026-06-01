@@ -325,6 +325,25 @@ sap.ui.define([
         onFilterAppointments: function () 
         {
             this._applyFilters();
+        },
+
+        // place holders, updating later 
+        handleAppointmentHeightChange: function (oEvent) 
+        {
+            const sKey = oEvent.getSource().getSelectedKey();
+            this.byId("PC1").setAppointmentHeight(sKey);
+        },
+
+        handleSortChange: function (oEvent) 
+        {
+            const sKey = oEvent.getSource().getSelectedKey();
+            console.log("Sort mode:", sKey);
+        },
+
+        handleAppointmentRoundingChange: function (oEvent) 
+        {
+            const sKey = oEvent.getSource().getSelectedKey();
+            this.byId("PC1").setAppointmentRound(sKey);
         }
     });
 });
