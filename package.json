@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "generator-easy-ui5": "^3.9.1",
+    "yo": "^7.0.1"
+  }
+}

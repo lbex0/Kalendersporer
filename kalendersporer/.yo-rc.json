@@ -1,0 +1,19 @@
+{
+  "generator-ui5-app": {
+    "namespace": "kalendersporer",
+    "framework": "OpenUI5",
+    "frameworkVersion": "1.148.0",
+    "author": "lbex0",
+    "initrepo": false,
+    "appId": "kalendersporer",
+    "appURI": "kalendersporer",
+    "cdnDomain": "sdk.openui5.org",
+    "defaultTheme": "sap_horizon",
+    "qunitCoverageFile": "qunit-coverage-istanbul.js",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "gte1_120_0": true,
+    "lt1_124_0": false,
+    "setupCompleted": true
+  }
+}
