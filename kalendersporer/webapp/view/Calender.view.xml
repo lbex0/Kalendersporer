@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="kalendersporer.controller.Calender"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    xmlns="sap.m">
+    <VBox class="sapUiSmallMargin" fitContainer="true">
+        <Toolbar>
+            <SearchField
+                id="searchField"
+                width="300px"
+                placeholder="Search people..."
+                liveChange="onSearchPeople" />
+
+            <Select
+                id="appointmentTypeFilter"
+                change="onFilterAppointments"
+                width="200px"
+                autoAdjustWidth="true"
+                forceSelection="false"
+                placeholder="Filter by type">
+                <items>
+                    <core:Item key="" text="All Types" />
+                    <core:Item key="Bursdag" text="Bursdag" />
+                    <core:Item key="Fravær" text="Fravær" />
+                    <core:Item key="Ferie" text="Ferie" />
+                    <core:Item key="Fridager" text="Fridager" />
+                </items>
+            </Select>
+
+            <Button icon="sap-icon://undo" tooltip="Reset Filters" press="onResetFilters" />
+            <ToolbarSpacer />
+            <Text text="Logged in as: {user>/username}" visible="{= !!${user>/username}}" />
+            <Button icon="sap-icon://log" tooltip="Logout" text="Logout" press="onLogout" />
+            <Button icon="sap-icon://palette" tooltip="Toggle Theme" press="onToggleTheme" />
+        </Toolbar>
+    </VBox>
+</mvc:View>
