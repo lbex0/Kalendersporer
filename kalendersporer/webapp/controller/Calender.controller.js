@@ -44,7 +44,7 @@ sap.ui.define([
             const oView = this.getView();
             const viewModel = new JSONModel(
             {
-                startDate: UI5Date.getInstance(2025, 0, 1),
+                startDate: UI5Date.getInstance(2026, 0, 1),
                 people: [],
                 originalPeople: []
             });
@@ -279,9 +279,7 @@ sap.ui.define([
                 .map(person => (
                 {
                     ...person,
-                    appointments: (sCategory
-                        ? person.appointments.filter(app => app.category === sCategory)
-                        : person.appointments
+                    appointments: (sCategory ? person.appointments.filter(app => app.category === sCategory) : person.appointments
                     ).map(app => (
                     {
                         ...app,
@@ -337,13 +335,156 @@ sap.ui.define([
         handleSortChange: function (oEvent) 
         {
             const sKey = oEvent.getSource().getSelectedKey();
-            console.log("Sort mode:", sKey);
+            const oModel = this.getView().getModel();
+
+            let aPeople = oModel.getProperty("/people");
+
+            if (sKey === "custom") 
+            {
+                // Alphabetical sorting
+                aPeople = [...aPeople].sort((a, b) => 
+                    a.name.localeCompare(b.name)
+                );
+            } 
+            else 
+            {
+                // Reset to original order
+                const original = oModel.getProperty("/originalPeople");
+                aPeople = JSON.parse(JSON.stringify(original));
+            }
+            
+            oModel.setProperty("/people", aPeople);
+            this._applyFilters();
         },
 
         handleAppointmentRoundingChange: function (oEvent) 
         {
             const sKey = oEvent.getSource().getSelectedKey();
-            this.byId("PC1").setAppointmentRound(sKey);
+            this.byId("PC1").setAppointmentRoundness(sKey);
+        },
+
+        openStatus: function () 
+        {
+            const selectedDate = this.byId("PC1").getStartDate();
+
+            const oModel = new sap.ui.model.json.JSONModel(
+            {
+                employees: [],
+                selectedDate: selectedDate
+            });
+
+            this.getView().setModel(oModel, "statusModel");
+            this._updateStatusData();
+            this.byId("statusDialog").open();
+        },
+
+
+        onCloseStatusDialog: function () 
+        {
+            this.byId("statusDialog").close();
+        },
+
+        _getStatusForPerson: function (person, date) 
+        {
+            const checkDate = new Date(date);
+
+            for (let app of person.appointments) 
+            {
+                if (app.start <= checkDate && app.end >= checkDate) 
+                {
+
+                    const durationDays = Math.ceil(
+                        (app.end - app.start) / (1000 * 60 * 60 * 24)) + 1;
+
+                    switch (app.category) 
+                    {
+                        case "Fravær":
+                            return {
+                                text: app.title || "Fravær",
+                                state: "Error"
+                            };
+
+                        case "Sykdom":
+                            return {
+                                text: "Syk",
+                                state: "Error"
+                            };
+
+                        case "Permisjon":
+                            return {
+                                text: "Permisjon",
+                                state: "Warning"
+                            };
+
+                        case "Ferie":
+                            return {
+                                text: `${app.title} (${durationDays} dager)`,
+                                state: "Warning"
+                            };
+
+                        case "Fridager":
+                            return {
+                                text: "Fridag",
+                                state: "Information"
+                            };
+
+                        case "Bursdag":
+                            return {
+                                text: "Har bursdag 🎉",
+                                state: "Success"
+                            };
+
+                        default:
+                            return {
+                                text: "Opptatt",
+                                state: "Warning"
+                            };
+                    }
+                }
+            }
+
+            return { text: "Ledig", state: "Success" };
+        },
+
+        _updateStatusData: function () 
+        {
+            const oStatusModel = this.getView().getModel("statusModel");
+            const selectedDate = oStatusModel.getProperty("/selectedDate");
+
+            const people = this.getView().getModel().getProperty("/people");
+
+            const statusData = people.map(person => 
+            {
+                const status = this._getStatusForPerson(person, selectedDate);
+
+                return {
+                    name: person.name,
+                    pic: person.pic,
+                    statusText: status.text,
+                    statusState: status.state
+                };
+            });
+
+            oStatusModel.setProperty("/employees", statusData);
+        },
+        
+        formatDate: function (date) 
+        {
+            if (!date) return "";
+            return new Date(date).toLocaleDateString("no-NO", 
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            });
+        },
+
+        onStatusDateChange: function (oEvent) 
+        {
+            const date = oEvent.getSource().getDateValue();
+
+            this.getView().getModel("statusModel").setProperty("/selectedDate", date);
+            this._updateStatusData();
         }
     });
 });

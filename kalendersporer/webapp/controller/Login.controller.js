@@ -9,7 +9,11 @@ sap.ui.define([
     return Controller.extend("kalendersporer.controller.Login", 
     {
         
-        onInit: function () {},
+        onInit: function () 
+        {
+            this.byId("usernameInput").setValue("");
+            this.byId("passwordInput").setValue("");
+        },
 
         onLogin: async function () 
         {

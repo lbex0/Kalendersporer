@@ -36,6 +36,9 @@
 		"wdio-ui5-service": "^3.0.8"
 	},
 	"dependencies": {
+		"@sap-ux/adp-tooling": "^1.0.1",
+		"@sap-ux/preview-middleware": "^1.0.2",
+		"@sap/ux-ui5-tooling": "^1.25.0",
 		"ui5-middleware-simpleproxy": "^3.8.0"
 	}
 }
