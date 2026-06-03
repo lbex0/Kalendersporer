@@ -134,8 +134,8 @@
         <Text text="Status for valgt dato: {path: 'statusModel>/selectedDate', formatter: '.formatDate'}"
             class="sapUiSmallMarginBottom"/>
             <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
-                <Text text="Ansatt" class="sapUiSmallMarginBegin" />
-                <Text text="Status" class="sapUiSmallMarginEnd" />
+            <Title text="Ansatt" level="H5" class="sapUiSmallMarginBegin" />
+            <Title text="Status" level="H5" class="sapUiSmallMarginEnd" />
             </HBox>
             <List items="{statusModel>/employees}">
                 <CustomListItem>

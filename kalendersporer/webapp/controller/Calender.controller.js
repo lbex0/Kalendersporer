@@ -44,7 +44,7 @@ sap.ui.define([
             const oView = this.getView();
             const viewModel = new JSONModel(
             {
-                startDate: UI5Date.getInstance(2026, 0, 1),
+                startDate: UI5Date.getInstance(2026, 6, 1),
                 people: [],
                 originalPeople: []
             });
@@ -113,7 +113,7 @@ sap.ui.define([
                     if (!birthday) return;
 
                     const [, month, day] = birthday.split("-");
-                    const birthdayDate = UI5Date.getInstance(2025, parseInt(month, 10) - 1, parseInt(day, 10));
+                    const birthdayDate = UI5Date.getInstance(2026, parseInt(month, 10) - 1, parseInt(day, 10));
                     person.appointments.push(
                     {
                         start: birthdayDate,
