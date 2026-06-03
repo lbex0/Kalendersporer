@@ -4,6 +4,12 @@
     xmlns:core="sap.ui.core"
     xmlns:unified="sap.ui.unified"
     xmlns="sap.m">
+    
+    <ScrollContainer
+        height="100%"
+        width="100%"
+        vertical="true"
+        horizontal="false">
     <VBox class="sapUiSmallMargin" fitContainer="true">
         <OverflowToolbar class="sapUiSmallMarginBottom">
             <SearchField
@@ -36,39 +42,38 @@
             <Button icon="sap-icon://log" tooltip="Logout" text="Logout" press="onLogout" />
             <Button icon="sap-icon://palette" tooltip="Toggle Theme" press="onToggleTheme" />
         </OverflowToolbar>
-        
-        <HBox>
-        <VBox class="sapUiSmallMarginEnd">
-            <Label text="Appointment Size:" />
-            <Select change="handleAppointmentHeightChange" width="230px">
+<HBox wrap="Wrap" alignItems="Start" class="sapUiSmallMarginBottom">
+
+    <VBox width="230px" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+        <Label text="Avtalestørrelse:" />
+        <Select change="handleAppointmentHeightChange" width="100%">
+            <items>
+                <core:Item key="Regular" text="Normal" />
+                <core:Item key="HalfSize" text="Halv størrelse" />
+                <core:Item key="Large" text="Stor" />
+                <core:Item key="Automatic" text="Automatisk" />
+            </items>
+        </Select>
+    </VBox>
+        <VBox width="230px" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <Label text="Sortering av avtaler:" />
+            <Select change="handleSortChange" width="100%">
                 <items>
-                    <core:Item key="Regular" text="Regular" />
-                    <core:Item key="HalfSize" text="Half-Size" />
-                    <core:Item key="Large" text="Large" />
-                    <core:Item key="Automatic" text="Automatic" />
+                    <core:Item key="default" text="Standard sortering" />
+                    <core:Item key="custom" text="Alfabetisk sortering" />
+                </items>
+            </Select>
+        </VBox>
+        <VBox width="230px" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+            <Label text="Avrunding av avtalerad:" />
+            <Select change="handleAppointmentRoundingChange" width="100%">
+                <items>
+                    <core:Item key="None" text="Ingen" />
+                    <core:Item key="HalfColumn" text="Halv kolonne" />
                 </items>
             </Select>
         </VBox>
 
-        <VBox class="sapUiSmallMarginEnd">
-            <Label text="Appointment Sort:" />
-            <Select change="handleSortChange" width="230px">
-                <items>
-                    <core:Item key="default" text="Default Appointments Sort" />
-                    <core:Item key="custom" text="Alphabetical Appointments Sort" />
-                </items>
-            </Select>
-        </VBox>
-
-        <VBox class="sapUiSmallMarginEnd">
-            <Label text="Appointment Row Rounding:" />
-            <Select change="handleAppointmentRoundingChange" width="230px">
-                <items>
-                    <core:Item key="None" text="None" />
-                    <core:Item key="HalfColumn" text="Half Column" />
-                </items>
-            </Select>
-        </VBox>
     </HBox>
     <PlanningCalendar
         id="PC1"
@@ -79,8 +84,7 @@
         showEmptyIntervalHeaders="false"
         stickyHeader="true"
         showWeekNumbers="true"
-        width="100%"
-        height="100%">
+        width="100%">
 
         <rows>
             <PlanningCalendarRow
@@ -156,4 +160,5 @@
         </endButton>
     </Dialog>
     </VBox>
+    </ScrollContainer>
 </mvc:View>

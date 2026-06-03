@@ -325,7 +325,6 @@ sap.ui.define([
             this._applyFilters();
         },
 
-        // place holders, updating later 
         handleAppointmentHeightChange: function (oEvent) 
         {
             const sKey = oEvent.getSource().getSelectedKey();

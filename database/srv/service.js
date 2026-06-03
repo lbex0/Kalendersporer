@@ -54,7 +54,7 @@ module.exports = (srv) =>
       return req.reject(401, "Invalid username or password");
     }
     return {
-      accessToken: jwt.sign({ username }, JWT_SECRET, { expiresIn: "15m" }),
+      accessToken: jwt.sign({ username }, JWT_SECRET, { expiresIn: "1m" }),
       refreshToken: jwt.sign({ username }, REFRESH_SECRET, { expiresIn: "7d" })
     };
   });
