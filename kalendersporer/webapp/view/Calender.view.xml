@@ -38,8 +38,8 @@
             <ToolbarSpacer />
             <Button icon="sap-icon://account" tooltip="Ansatt Status" text="Ansatt status" press="openStatus"/>
             <ToolbarSpacer />
-            <Text text="Logged in as: {user>/username}" visible="{= !!${user>/username}}" />
-            <Button icon="sap-icon://log" tooltip="Logout" text="Logout" press="onLogout" />
+            <Text text="Logget inn som: {user>/username}" visible="{= !!${user>/username}}" />
+            <Button icon="sap-icon://log" tooltip="Logg ut" text="Logg ut" press="onLogout" />
             <Button icon="sap-icon://palette" tooltip="Toggle Theme" press="onToggleTheme" />
         </OverflowToolbar>
 <HBox wrap="Wrap" alignItems="Start" class="sapUiSmallMarginBottom">

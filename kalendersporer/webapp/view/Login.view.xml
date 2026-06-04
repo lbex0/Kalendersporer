@@ -9,12 +9,12 @@
         <content>
           <VBox renderType="Bare" width="100%" alignItems="Center" class="loginPanelContent" gap="1rem">
             <core:Icon src="sap-icon://employee" size="4rem" class="loginAvatar" />
-            <Text text="Sign in to continue" class="sapUiTinyMarginBottom" />
-            <Label text="Username" labelFor="usernameInput" />
+            <Text text="Logg inn for å fortsette" class="sapUiTinyMarginBottom" />
+            <Label text="Brukernavn" labelFor="usernameInput" />
             <Input id="usernameInput" placeholder="Enter your username" width="100%" liveChange="onUsernameChange" />
-            <Label text="Password" labelFor="passwordInput" />
+            <Label text="Passord" labelFor="passwordInput" />
             <Input id="passwordInput" placeholder="Enter your password" type="Password" width="100%" />
-            <Button text="Log in" type="Emphasized" width="100%" press="onLogin" />
+            <Button text="Logg inn" type="Emphasized" width="100%" press="onLogin" />
           </VBox>
         </content>
       </Panel>

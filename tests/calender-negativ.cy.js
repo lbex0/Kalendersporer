@@ -37,7 +37,7 @@ describe("Negativ test – kalenderen finner ingen resultater", () =>
     cy.get('.sapMDialog:visible, .sapMPopover:visible').should('not.exist');
 
     // Logg ut
-    cy.contains('Logout', { timeout: 4000 }).should('be.visible').click({ force: true });
+    cy.contains('Logg ut', { timeout: 4000 }).should('be.visible').click({ force: true });
 
     // Bekreft at vi er tilbake på login-siden
     cy.get('#content-kalendersporer---login--usernameInput-inner', { timeout: 8000 }).should('be.visible');

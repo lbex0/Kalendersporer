@@ -6,7 +6,8 @@ describe("Positiv test – finne Tobias sin bursdag og logge ut", () =>
     cy.login();
   });
 
-  it("skal søke etter Tobias, åpne bursdagen hans og logge ut", () => {
+  it("skal søke etter Tobias, åpne bursdagen hans og logge ut", () => 
+  {
     // Vente på at kalender lastet
     cy.get('[id*="PC1"]', { timeout: 8000 }).should("exist");
 
@@ -47,7 +48,7 @@ describe("Positiv test – finne Tobias sin bursdag og logge ut", () =>
     cy.contains(/Close|OK/i).click({ force: true });
 
     // Logg ut
-    cy.contains('Logout', { timeout: 4000 }).should('be.visible').click({ force: true })
+    cy.contains('Logg ut', { timeout: 4000 }).should('be.visible').click({ force: true })
 
     // Verifiser at vi er tilbake på login-siden
     cy.get('#content-kalendersporer---login--usernameInput-inner', { timeout: 8000 }).should('be.visible');

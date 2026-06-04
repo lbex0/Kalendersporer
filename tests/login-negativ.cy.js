@@ -10,9 +10,10 @@ describe("Login flow - negativ", () =>
     cy.get("#content-kalendersporer---login--passwordInput-inner").should('be.visible').type("abc123");
 
     // Klikk på login-knappen
-    cy.contains("Log in").should('be.visible').click();
+    cy.get("#__button0-BDI-content").should('be.visible').click();
 
     // Verifiser at vi IKKE navigerer til kalenderen
+    cy.wait(1000); // Vent litt for å sikre at eventuelle navigasjon har skjedd
     cy.url().should((url) => 
     {
       expect(url).to.not.include("#/calender");

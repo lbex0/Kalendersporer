@@ -1,5 +1,7 @@
-describe("Login flow", () => {
-  it("burde logge inn successfullt and navigere til calendar siden", () => {
+describe("Login flow", () => 
+{
+  it("burde logge inn successfullt and navigere til calendar siden", () => 
+  {
 
     // Gå til appens startside (login)
     cy.visit("http://localhost:8080/index.html#/");
@@ -9,14 +11,15 @@ describe("Login flow", () => {
     cy.get("#content-kalendersporer---login--passwordInput-inner").type("abc1");  
 
     // Klikk på login knappen
-    cy.contains("Log in").click();
+    cy.get("#__button0-BDI-content").click(); 
 
     // Verifiser at vi navigerte til kalenderen
+    cy.wait(1000); // Vent litt for å sikre at navigasjonen har skjedd
     cy.url().should("include", "#/calender");
 
     // Sjekk at kalenderkomponenten eksisterer i DOM
     cy.get('[id*="PC1"]', { timeout: 8000 })  // venter til PC1 vises
-      .should("exist");
+    .should("exist");
 
     // Sjekk at navnet på brukeren vises i headeren
     cy.contains("nora.kristiansen", { matchCase: false }).should("exist");
