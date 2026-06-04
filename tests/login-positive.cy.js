@@ -5,8 +5,8 @@ describe("Login flow", () => {
     cy.visit("http://localhost:8080/index.html#/");
 
     // Skriv inn brukernavn og passord
-    cy.get("#__xmlview0--usernameInput-inner").type("nora.kristiansen");  
-    cy.get("#__xmlview0--passwordInput-inner").type("abc1");  
+    cy.get("#content-kalendersporer---login--usernameInput-inner").type("nora.kristiansen");  
+    cy.get("#content-kalendersporer---login--passwordInput-inner").type("abc1");  
 
     // Klikk på login knappen
     cy.contains("Log in").click();

@@ -356,12 +356,6 @@ sap.ui.define([
             this._applyFilters();
         },
 
-        handleAppointmentRoundingChange: function (oEvent) 
-        {
-            const sKey = oEvent.getSource().getSelectedKey();
-            this.byId("PC1").setAppointmentRoundness(sKey);
-        },
-
         openStatus: function () 
         {
             const selectedDate = this.byId("PC1").getStartDate();

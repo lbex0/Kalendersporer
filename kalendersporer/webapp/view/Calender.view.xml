@@ -64,16 +64,6 @@
                 </items>
             </Select>
         </VBox>
-        <VBox width="230px" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
-            <Label text="Avrunding av avtalerad:" />
-            <Select change="handleAppointmentRoundingChange" width="100%">
-                <items>
-                    <core:Item key="None" text="Ingen" />
-                    <core:Item key="HalfColumn" text="Halv kolonne" />
-                </items>
-            </Select>
-        </VBox>
-
     </HBox>
     <PlanningCalendar
         id="PC1"
