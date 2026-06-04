@@ -10,16 +10,16 @@ describe("Negativ test – kalenderen finner ingen resultater", () =>
     // Vent til kalenderen er lastet
     cy.get('[id*="PC1"]', { timeout: 8000 }).should("exist");
 
-    // Åpne visningsmenyen og bytt til Months
+    // Åpne visningsmenyen og bytt til Månder
     cy.get('#content-kalendersporer---calender--PC1-Header-ViewSwitch-select').should('be.visible').click({ force: true });
-    cy.get('.sapMPopup-CTX .sapMSelectList', { timeout: 4000 }).contains('li', 'Months').click({ force: true });
+    cy.get('.sapMPopup-CTX .sapMSelectList', { timeout: 4000 }).contains('li', 'Måneder').click({ force: true });
 
-    // Bekreft at visningen er satt til Months
+    // Bekreft at visningen er satt til Måneder
     cy.get('#content-kalendersporer---calender--PC1-Header-ViewSwitch-select-labelText')
       .should($el => 
       {
         const txt = $el.text().trim().toLowerCase();
-        expect(txt).to.eq('months');
+        expect(txt).to.eq('måneder');
       });
 
     // Naviger kalenderen for å sikre at knappene fungerer

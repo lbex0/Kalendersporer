@@ -5,15 +5,15 @@
     xmlns:core="sap.ui.core">
   <Page showHeader="false" enableScrolling="false" class="sapUiContentPadding" backgroundDesign="Solid">
     <VBox width="100%" height="100vh" justifyContent="Center" alignItems="Center">
-      <Panel width="380px" headerText="Welcome back" class="loginCard" expandable="false">
+      <Panel width="380px" headerText="Velkommen tilbake" class="loginCard" expandable="false">
         <content>
           <VBox renderType="Bare" width="100%" alignItems="Center" class="loginPanelContent" gap="1rem">
             <core:Icon src="sap-icon://employee" size="4rem" class="loginAvatar" />
             <Text text="Logg inn for å fortsette" class="sapUiTinyMarginBottom" />
             <Label text="Brukernavn" labelFor="usernameInput" />
-            <Input id="usernameInput" placeholder="Enter your username" width="100%" liveChange="onUsernameChange" />
+            <Input id="usernameInput" placeholder="Skriv inn ditt brukernavn" width="100%" liveChange="onUsernameChange" />
             <Label text="Passord" labelFor="passwordInput" />
-            <Input id="passwordInput" placeholder="Enter your password" type="Password" width="100%" />
+            <Input id="passwordInput" placeholder="Skriv inn ditt passord" type="Password" width="100%" />
             <Button text="Logg inn" type="Emphasized" width="100%" press="onLogin" />
           </VBox>
         </content>

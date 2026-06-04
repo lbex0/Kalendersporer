@@ -14,15 +14,15 @@ describe("Positiv test – finne Tobias sin bursdag og logge ut", () =>
     // Åpne dropdown 
     cy.get('#content-kalendersporer---calender--PC1-Header-ViewSwitch-select').should('be.visible').click({ force: true });
 
-    // Når listen dukker opp, velg Months
-    cy.get('.sapMPopup-CTX .sapMSelectList', { timeout: 4000 }).contains('li', 'Months').click({ force: true });
+    // Når listen dukker opp, velg Månder
+    cy.get('.sapMPopup-CTX .sapMSelectList', { timeout: 4000 }).contains('li', 'Måneder').click({ force: true });
 
-    // Verifiser at teksten ble oppdatert fra Hours til Months
+    // Verifiser at teksten ble oppdatert fra Timer til Månder
     cy.get('#content-kalendersporer---calender--PC1-Header-ViewSwitch-select-labelText')
     .should($el => 
     {
         const txt = $el.text().trim().toLowerCase();
-        expect(['months']).to.include(txt);
+        expect(['måneder']).to.include(txt);
     });
 
     // Naviger i kalenderen med å gå en gang frem og tilbake for å sikre at navigasjonen fungerer
